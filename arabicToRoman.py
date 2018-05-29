@@ -7,8 +7,17 @@ def title():
     print("+     Created By: Sean McElhare        +")
     print("+     github.com/thecrimsoncoder       +")
     print("++++++++++++++++++++++++++++++++++++++++")
-def decode():
+def promptInput():
     arabicInput =  input("Please enter a number: ")
+    if arabicInput.isnumeric():
+        romanNumerals = decode(arabicInput)
+        print("Roman Numerals Conversion: " + str(romanNumerals))
+    else:
+        print("Please enter something that actually makes sense!")
+        time.sleep(2)
+        promptInput()
+def decode(input):
+
     arabicRomanMapping = {
                                 1000 : "M",
                                 900 : "CM",
@@ -24,15 +33,17 @@ def decode():
                                 1 : "I"
 
                             }
+    romanString = ""
+    input = int(input)
+    for divisor in arabicRomanMapping.keys():
+        print("Input: " + str(input))
+        print("Divisor: " + str(divisor))
+        quotient, remainder = divmod(input,divisor)
+        print("Quotient: " + str(quotient))
+        print("Remainder: " + str(remainder))
+        romanString = romanString + str(arabicRomanMapping[divisor] * quotient)
+        input = input - (divisor * quotient)
 
-    if arabicInput.isnumeric():
-
-
-    else:
-        print("Please enter something that acutally makes sense kthxbye")
-        time.sleep(2)
-        decode()
-
-title()
-decode()
-
+    return romanString
+title()1993
+promptInput()
