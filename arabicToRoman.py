@@ -45,5 +45,5 @@ def decode(input):
         input = input - (divisor * quotient)
 
     return romanString
-title()1993
+title()
 promptInput()
